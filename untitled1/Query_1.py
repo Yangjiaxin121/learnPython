@@ -1,0 +1,21 @@
+from contextlibClosing import contextmanager
+
+class Query(object):
+
+    def __init__(self, name):
+        self.name = name
+
+
+
+    def query(self):
+        print('Query info about %s...' % self.name)
+
+@contextmanager
+def create_query(name):
+    print('Begin')
+    q = Query(name)
+    yield q
+    print('End')
+
+with Query('Bob') as q:
+    q.query()
